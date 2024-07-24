@@ -1,0 +1,11 @@
+res://card.tscn
+res://Scripts/GameStateMachine.gd
+res://HTTPRequest.gd
+res://ui_card.tscn
+res://deck_build.tscn
+res://deck_db.tscn
+res://deck_ui.tscn
+res://card_db.tscn
+res://scene_manager.tscn
+res://game.tscn
+res://scene_manager.gd

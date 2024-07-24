@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7vbgscfkv6hn"]
+
+[ext_resource type="Script" path="res://Scripts/ui_card.gd" id="1_aakxi"]
+[ext_resource type="Texture2D" uid="uid://be715eraobcbw" path="res://Sprites/Cards/TCard.png" id="1_qm6ak"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axd27"]
+size = Vector2(160, 240)
+
+[node name="UICard" type="Area2D"]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_aakxi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qm6ak")
+
+[node name="BaseCollision" type="CollisionShape2D" parent="."]
+position = Vector2(2.08165e-12, 0)
+shape = SubResource("RectangleShape2D_axd27")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
