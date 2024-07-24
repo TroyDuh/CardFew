@@ -3,20 +3,24 @@ extends GameState
 class_name DrawPhase
 
 func Enter():
-	phaseName = "Draw"
-	get_parent().turn +=1
-	get_parent().energy = get_parent().turn
-	if get_parent().turn == 1:
-		get_parent().get_parent().get_node("EnemyDeck").draw(5)
-		get_parent().get_parent().get_node("PlayerDeck").draw(5)
-	else:
-		get_parent().get_parent().get_node("PlayerDeck").draw(1)
-		get_parent().get_parent().get_node("EnemyDeck").draw(1)
+	get_parent().get_parent().get_node("Camera2D").zoom = Vector2(1,1)
 	
-	if get_parent().turn > 1:
-		await create_tween().tween_interval(0.2).finished
-		Exit()
-		Transitioned.emit(self.get_parent().get_node("ActionPhase"), "ActionPhase")
+	phaseName = "Draw"
+	
+	if get_parent().get_parent().gameRunning:
+		get_parent().turn +=1
+		get_parent().energy = get_parent().turn
+		if get_parent().turn == 1:
+			get_parent().get_parent().get_node("EnemyDeck").draw(5)
+			get_parent().get_parent().get_node("PlayerDeck").draw(5)
+		else:
+			get_parent().get_parent().get_node("EnemyDeck").draw(1)
+			get_parent().get_parent().get_node("PlayerDeck").draw(1)
+		
+		if get_parent().turn > 1:
+			await create_tween().tween_interval(0.2).finished
+			Exit()
+			Transitioned.emit(self.get_parent().get_node("ActionPhase"), "ActionPhase")
 
 func Exit():
 	pass

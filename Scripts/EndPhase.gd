@@ -25,6 +25,8 @@ func Enter():
 	EnemySlots = [EnemySlot1, EnemySlot2, EnemySlot3, EnemySlot4, EnemySlot5]
 	PlayerSlots = [PlayerSlot1, PlayerSlot2, PlayerSlot3, PlayerSlot4, PlayerSlot5]
 	
+	get_parent().get_parent().get_node("Camera2D").zoom = Vector2(1,1)
+	
 	#Looping through Player & Enemy slots
 	for X in PlayerSlots.size():
 		var PlayerSlot = PlayerSlots[X]

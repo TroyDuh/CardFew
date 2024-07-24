@@ -18,7 +18,7 @@ var start = 576
 var space = 90
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func startup():
 	PlayerSlots = [PlayerSlot1, PlayerSlot2, PlayerSlot3, PlayerSlot4, PlayerSlot5]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -97,3 +97,10 @@ func cardLeftField(cardNode):
 	
 	#Moving card to discard
 	get_parent().get_node("PlayerDiscard").discardCards([cardNode.cardName])
+
+func clearCards():
+	handContents = []
+	for card in self.get_children():
+		cardList.remove_at(cardList.find(card))
+		self.remove_child(card)
+		card.queue_free()

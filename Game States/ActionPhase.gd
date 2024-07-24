@@ -32,14 +32,15 @@ func Enter():
 	phaseName = "Action"
 	var EnemySlots = [EnemySlot1, EnemySlot2, EnemySlot3, EnemySlot4, EnemySlot5]
 	PlayerSlots = [PlayerSlot1, PlayerSlot2, PlayerSlot3, PlayerSlot4, PlayerSlot5]
-	#Temp enemy placing code
-	for X in get_parent().turn:
-		var enemyPlacementSlot = rng.randi_range(1, EnemySlots.size())
-		var chosenEnemySlot
-		chosenEnemySlot = EnemySlots[enemyPlacementSlot - 1]
-		
-		if !chosenEnemySlot.cardInSlot:
-			get_parent().get_parent().get_node("EnemyHand").play(get_parent().get_parent().get_node("EnemyHand").randCardName(), chosenEnemySlot.fieldNum)
+	if get_parent().get_parent().gameRunning:
+		#Temp enemy placing code
+		for X in get_parent().turn:
+			var enemyPlacementSlot = rng.randi_range(1, EnemySlots.size())
+			var chosenEnemySlot
+			chosenEnemySlot = EnemySlots[enemyPlacementSlot - 1]
+			
+			if !chosenEnemySlot.cardInSlot:
+				get_parent().get_parent().get_node("EnemyHand").play(get_parent().get_parent().get_node("EnemyHand").randCardName(), chosenEnemySlot.fieldNum)
 
 func Exit():
 	pass

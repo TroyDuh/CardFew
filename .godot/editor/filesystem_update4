@@ -1,6 +1,6 @@
 res://card.tscn
 res://Scripts/GameStateMachine.gd
-res://HTTPRequest.gd
+res://Scripts/GameEnd.gd
 res://ui_card.tscn
 res://deck_build.tscn
 res://deck_db.tscn
@@ -8,4 +8,15 @@ res://deck_ui.tscn
 res://card_db.tscn
 res://scene_manager.tscn
 res://game.tscn
-res://scene_manager.gd
+res://hand.tscn
+res://enemy_deck.tscn
+res://Game States/DrawPhase.gd
+res://Scripts/MainMenu.gd
+res://main_menu.tscn
+res://Scripts/deck_build.gd
+res://Scripts/Deck.gd
+res://Scripts/enemy_deck.gd
+res://Scripts/EnemyHand.gd
+res://game.gd
+res://Game States/ActionPhase.gd
+res://VBoxContainer.gd

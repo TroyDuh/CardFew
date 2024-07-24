@@ -25,3 +25,6 @@ func randomCard():
 	if discardContents.size() > 0:
 		return discardContents[rng.randi_range(0, discardContents.size()-1)]
 	return null
+
+func clearCards():
+	discardContents = []

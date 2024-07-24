@@ -5,6 +5,7 @@ var states : Dictionary = {}
 
 @export var initial_state: GameState
 
+
 #card select signal
 signal cardSelected
 
@@ -16,6 +17,14 @@ var energy = turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	current_state = $GameState
+
+func startup():
+	turn = 0
+	playerHealth = 5
+	enemyHealth = 10
+	energy = turn
+	
 	for child in get_children():
 		if child is GameState:
 			

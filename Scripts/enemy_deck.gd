@@ -6,7 +6,7 @@ var deckContents = []
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func startup():
 	deckContents = ["Blue Eyes", "Blue Eyes", "Blue Eyes", "DM", "R-Ace", "Dummy", "Dummy", "Dummy", "Dummy", "Right Rabbit", "Roberto", "Wrong Rabbit", "Alligator Swordsman", "Jerry Beans Man", "Kuriboh", "Hawk", "Ouroboros", "Skeleton King"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,7 +21,7 @@ func draw(cardCount):
 			cardsDrawn.append(deckContents[cardDrawn])
 			deckContents.remove_at(cardDrawn)
 		else:
-			print("deck out bruv")
+			pass
 	get_parent().get_node("EnemyHand").addCards(cardsDrawn)
 
 func add(cardName):

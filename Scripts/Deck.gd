@@ -6,8 +6,8 @@ var deckContents = []
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	deckContents = get_parent().get_parent().get_node("DeckDB").deckContents
+func startup():
+	deckContents = get_parent().get_parent().get_node("DeckDB").deckContents.duplicate()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -20,7 +20,7 @@ func draw(cardCount):
 			cardsDrawn.append(deckContents[cardDrawn])
 			deckContents.remove_at(cardDrawn)
 		else:
-			print("deck out bruv")
+			get_parent().endGame(false)
 	get_parent().get_node("PlayerHand").addCards(cardsDrawn)
 
 func add(cardNames):

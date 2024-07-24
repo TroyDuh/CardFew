@@ -1,6 +1,6 @@
 extends Node
 
-var inventory = []
+var inventory = ["Blue Eyes"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

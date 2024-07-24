@@ -22,7 +22,7 @@ var start = 576
 var space = 90
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func startup():
 	EnemySlots = [EnemySlot1, EnemySlot2, EnemySlot3, EnemySlot4, EnemySlot5]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,7 +56,8 @@ func play(cardName, fieldSlot):
 	return null
 
 func randCardName():
-	return handContents[rng.randi_range(0, handContents.size() - 1)]
+	if handContents.size() > 0:
+		return handContents[rng.randi_range(0, handContents.size() - 1)]
 
 func flipAllCards():
 	for cardNode in cardsOnField:
@@ -123,3 +124,11 @@ func cardLeftField(cardNode):
 	
 	#Moving card to discard
 	get_parent().get_node("PlayerDiscard").discardCards([cardNode.cardName])
+
+func clearCards():
+	handContents = []
+	cardsOnField = []
+	for card in self.get_children():
+		cardList.remove_at(cardList.find(card))
+		self.remove_child(card)
+		card.queue_free()

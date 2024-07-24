@@ -27,6 +27,7 @@ func Enter():
 	#Camera node fetch
 	var camera = get_parent().get_parent().get_node("Camera2D")
 	var tween = get_tree().create_tween()
+	var camTween = get_tree().create_tween()
 	
 	EnemySlots = [EnemySlot1, EnemySlot2, EnemySlot3, EnemySlot4, EnemySlot5]
 	PlayerSlots = [PlayerSlot1, PlayerSlot2, PlayerSlot3, PlayerSlot4, PlayerSlot5]
@@ -40,24 +41,20 @@ func Enter():
 			camera.position.x = EnemySlot.position.x
 			camera.position.y = (EnemySlot.position.y + PlayerSlot.position.y)/2
 			#Tweening code
-			tween.tween_property(camera, "zoom", Vector2(1.4,1.4), 0.2)
+			camTween.tween_property(camera, "zoom", Vector2(1.4,1.4), 0.2)
 			
 			if !EnemySlot.cardInSlot && PlayerSlot.cardInSlot.atk > 0:
 				get_parent().enemyHealth -= 1
-				print("enemy hurt...")
 			if  !PlayerSlot.cardInSlot && EnemySlot.cardInSlot.atk > 0:
 				get_parent().playerHealth -= 1
-				print("player hurt...")
 			if EnemySlot.cardInSlot && PlayerSlot.cardInSlot:
 				var pATK = PlayerSlot.cardInSlot.atk
 				var eATK = EnemySlot.cardInSlot.atk
 				
 				if "Flying" in EnemySlot.cardInSlot.attributes && !"Flying" in PlayerSlot.cardInSlot.attributes:
 					get_parent().playerHealth -= 1
-					print("player hurt...")
 				if "Flying" in PlayerSlot.cardInSlot.attributes && !"Flying" in EnemySlot.cardInSlot.attributes:
 					get_parent().enemyHealth -= 1
-					print("enemy hurt...")
 				
 				#Tweening attack anims
 				if EnemySlot.cardInSlot.atk > 0 && !(("Flying" in EnemySlot.cardInSlot.attributes) && !("Flying" in PlayerSlot.cardInSlot.attributes)):
@@ -81,12 +78,25 @@ func Enter():
 	await create_tween().tween_interval(0.4).finished
 	#Camera to default
 	camera.position = Vector2(576, 324)
-	tween = get_tree().create_tween()
-	tween.tween_property(camera, "zoom", Vector2(1,1), 0.2)
+	camTween = get_tree().create_tween()
 	
-	await create_tween().tween_interval(0.2).finished
+	var camTweenTime = 0.2
+	if get_parent().playerHealth <= 0 || get_parent().enemyHealth <= 0:
+		camTweenTime = 0.7
+	camTween.tween_property(camera, "zoom", Vector2(1,1), camTweenTime)
+
+	await create_tween().tween_interval(camTweenTime).finished
 	Exit()
-	Transitioned.emit(self.get_parent().get_node("EndPhase"), "EndPhase")
+	if get_parent().playerHealth <= 0:
+		print("Player Lost!")
+		get_parent().get_parent().endGame(false)
+	elif get_parent().enemyHealth <= 0:
+		print("Player Won!")
+		get_parent().get_parent().endGame(true)
+	else:
+		Transitioned.emit(self.get_parent().get_node("EndPhase"), "EndPhase")
+	
+	camera.zoom = Vector2(1,1)
 
 
 
