@@ -198,7 +198,7 @@ theme_override_font_sizes/font_size = 100
 text = "You Lost...
 "
 
-[node name="Retry" type="Button" parent="GameEnd"]
+[node name="Next" type="Button" parent="GameEnd"]
 layout_mode = 0
 offset_left = 490.0
 offset_top = 294.0
@@ -227,7 +227,7 @@ texture = ExtResource("15_v0sp2")
 [connection signal="slotChosen" from="FieldSlot4" to="GameStateMachine" method="_on_field_slot_chosen"]
 [connection signal="slotChosen" from="FieldSlot5" to="GameStateMachine" method="_on_field_slot_chosen"]
 [connection signal="pressed" from="Continue" to="GameStateMachine" method="_on_continue_pressed"]
-[connection signal="pressed" from="GameEnd/Retry" to="." method="Enter"]
+[connection signal="pressed" from="GameEnd/Next" to="GameEnd" method="_on_next_pressed"]
 [connection signal="pressed" from="GameEnd/Exit" to="." method="_on_exit_pressed"]
 
 [editable path="GameStateMachine"]

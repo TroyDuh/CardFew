@@ -4,6 +4,11 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Use a relative path from the project root
+	var script_path = "res://launch_server.zsh"
+	var output = []
+	await OS.execute("zsh",[script_path],output)
+	
 	initialScene.visible = true
 	initialScene.Enter()
 
