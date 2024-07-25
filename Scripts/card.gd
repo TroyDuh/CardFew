@@ -14,6 +14,7 @@ var tributeCost = 0
 var energyCost = 0
 var attributes = []
 var cardIMG = load("res://Sprites/Cards/TCard.png")
+var cardFront = load("res://Sprites/Cards/BlankCard.png")
 var set
 var playerCard = true
 var selected = false
@@ -132,11 +133,11 @@ func setCardStats(stats):
 
 func setCard():
 	set = true
-	$Sprite2D.texture = load("res://Sprites/Cards/SetCard.png")
+	$CardFront.texture = load("res://Sprites/Cards/SetCard.png")
 
 func flipCard():
 	set = false
-	$Sprite2D.texture = cardIMG
+	$CardFront.texture = cardFront
 
 func switchControl():
 	playerCard = !playerCard

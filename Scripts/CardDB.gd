@@ -18,15 +18,15 @@ func _ready():
 func _process(delta):
 	pass
 
-func createCards(cardList):
-	for cardDict in cardList:
+func createCards(cardList : Array):
+	for X in cardList.size():
+		var cardDict = cardList[X].duplicate()
 		cardDictHolder = cardDict
 		get_parent().get_node("HTTPRequest").image_download_request(cardDict.get("image"), mergeCardData)
 		await resume
 
 func mergeCardData(texture):
-	cardDB.merge({cardDictHolder.get("name"): [cardDictHolder.get("health"), cardDictHolder.get("ATK"), cardDictHolder.get("tribute_cost"), cardDictHolder.get("energy_cost"), cardDictHolder.get("attributes"), texture]})
-	print(cardDB)
+	cardDB.merge({cardDictHolder.get("name"): [cardDictHolder.get("health"), cardDictHolder.get("ATK"), cardDictHolder.get("tribute_cost"), cardDictHolder.get("energy_cost"), cardDictHolder.get("attribute"), texture]})
 	resume.emit()
 
 func clearCardDB():

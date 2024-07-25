@@ -10,16 +10,15 @@ config_version=5
 
 [application]
 
-config/name="YamiNoGame"
+config/name="Card Few"
 run/main_scene="res://scene_manager.tscn"
-config/features=PackedStringArray("4.0", "GL Compatibility")
+config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/stretch/mode="canvas_items"
 
-[rendering]
+[dotnet]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+project/assembly_name="Card Few"

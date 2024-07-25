@@ -11,3 +11,8 @@ res://hand.tscn
 res://enemy_deck.tscn
 res://main_menu.tscn
 res://Scripts/scene_manager.gd
+res://HTTPRequest.gd
+res://Scripts/MainMenu.gd
+res://Scripts/enemy_deck.gd
+res://Scripts/deck_db.gd
+res://Scripts/GameEnd.gd

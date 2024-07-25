@@ -20,6 +20,7 @@ func _ready():
 
 
 func _on_mouse_entered():
+	print("mou enter")
 	hovered = true
 
 func _on_mouse_exited():
@@ -30,6 +31,7 @@ func _input(event):
 		cardInfo.emit(self)
 	
 	if event.is_pressed() && event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && hovered:
+		print("clicked...")
 		cardInfo.emit(self)
 		cardSelected.emit(self)
 		queue_free()
@@ -44,5 +46,4 @@ func setCardStats(stats):
 		$Sprite2D.texture = stats[5]
 
 func setImage(image):
-	print("yay!")
 	$Sprite2D.texture = image
