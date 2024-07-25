@@ -29,5 +29,8 @@ visible = false
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 script = ExtResource("6_g53t1")
 
+[node name="Sprite2D" type="Sprite2D" parent="HTTPRequest"]
+position = Vector2(100, 100)
+
 [node name="MainMenu" parent="." instance=ExtResource("8_rlvkx")]
 visible = false

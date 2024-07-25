@@ -8,10 +8,10 @@ func _ready():
 	
 	#Testing image download with placeholder image
 	#image_download_request("https://via.placeholder.com/512", testPrint)
-	pass
 
 func testPrint(response):
 	get_parent().get_node("DeckDB").addCards(response)
+	#$Sprite2D.texture = response
 
 #Card Creation Method
 func make_post_request(description, returnFunction):
@@ -49,6 +49,7 @@ func _on_request_completed(result, response_code, headers, body):
 			print("JSON Parse Error: ", json.get_error_message())
 	else:
 		print("Error: ", result)
+		print(response_code)
 
 #Image Download Methods
 func image_download_request(url, returnFunction):

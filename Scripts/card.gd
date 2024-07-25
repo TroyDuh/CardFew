@@ -127,7 +127,8 @@ func setCardStats(stats):
 		tributeCost = stats[2]
 		energyCost = stats[3]
 		attributes = stats[4]
-		$Sprite2D.texture = stats[5]
+		cardIMG = stats[5]
+		$Sprite2D.texture = cardIMG
 
 func setCard():
 	set = true
